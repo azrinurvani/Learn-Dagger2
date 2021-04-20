@@ -1,5 +1,0 @@
-include ':ppA yM'
-include ':listview'
-include ':list'
-include ':app'
-rootProject.name = "Recycler View + View Binding"
