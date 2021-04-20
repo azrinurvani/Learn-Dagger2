@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Recycler View + View Binding</string>
+    <string name="title_list">List View</string>
+    <string name="title_listview">List View</string>
+</resources>
