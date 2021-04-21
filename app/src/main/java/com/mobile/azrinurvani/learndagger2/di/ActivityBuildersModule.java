@@ -10,13 +10,11 @@ import dagger.android.ContributesAndroidInjector;
 @Module
 public abstract class ActivityBuildersModule {
 
-    //Method atau obje yang ada pada module harus bersifat abstract atau static
+    //Method atau object yang ada pada module yang berisi ContributeAndroidInjector (Bind Activity)
+    // harus bersifat abstract atau static
 
     @ContributesAndroidInjector
     abstract AuthActivity contributeAuthActivity();
 
-    @Provides
-    static String someString(){
-        return "this is test string from inject";
-    }
+
 }
