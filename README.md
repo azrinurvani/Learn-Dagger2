@@ -14,3 +14,17 @@ Learn Dagger2 using MVVM and Navigation Component
 10. Buat method dengan annotaion @Provides yang bernama provideRequestOptions() dengan nilai return RequestOptions di AppModule
 11. Buat method dengan annotaion @Provides yang bernama provideGlideInstance dengan nilai return RequestManager yang memiliki parameter application dan requestOptions di AppModule
 12. Buat method (depedency) dengan annotation @Provides yang bernama provideAppDrawable dengan return Drawable (untuk set Image pada Glide berupa logo)
+13. Buat package ui dan viewmodels
+14. Pindahkan AuthActivity pada UI
+15. Tambahkan annotaion @Singleton pada AppComponent dan pada setiap depedency (method yang ada di @Module -> AppModule)
+16. Buat class baru dengan nama ViewModelProviderFactory di package viemodels
+17. Copy and paste Code dari ViewModelProviderFactory dari GIT
+18. Pada package di buat class baru dengan nama ViewModelFactoryModule untuk binds ViewModelProviderFactory
+19. Pada package UI buat class baru dengan nama AuthViewModel dan @Inject constructor dari AuthViewModel tersebut (proses inject bisa dilakukan apabila sudah disediakan depedency dari object tersebut)
+20. Buat key atau annotation class dengan nama ViewModelKey untuk Binding Map ViewModel
+21. Pada package di buat package baru dengan nama auth, dan buat class baru dengan nama AuthViewModelsModule untuk binding ViewModel dari AuthViewModel menggunakan Map (ViewModelKey)
+22. Daftarkan module dari AuthViewModelsModule pada contributeAuthActivity yang ada di class AcitivtyBuildersModule (disini sudah menyinggung konsep Sub Component) 
+23. Inject ViewModelProviderFactory pada AuthActivity
+24. Buat variable untuk AuthViewModel dan inisialisasi dengan menggunakan ViewModelProviderFactory
+25. Buat log debug untuk testing apakah AuthViewModel berjalan di constructor AuthViewModel
+26. Run app
