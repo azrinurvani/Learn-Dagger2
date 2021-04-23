@@ -1,13 +1,31 @@
 package com.mobile.azrinurvani.learndagger2.models;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class User {
 
+    @SerializedName("id")
+    @Expose
     private int id;
-    private String username;
 
-    public User(int id, String username) {
+    @SerializedName("name")
+    @Expose
+    private String name;
+
+    @SerializedName("email")
+    @Expose
+    private String email;
+
+    @SerializedName("website")
+    @Expose
+    private String website;
+
+    public User(int id, String name, String email, String website) {
         this.id = id;
-        this.username = username;
+        this.name = name;
+        this.email = email;
+        this.website = website;
     }
 
     public int getId() {
@@ -18,11 +36,27 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
     }
 }
