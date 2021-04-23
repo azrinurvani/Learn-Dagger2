@@ -35,3 +35,10 @@ Learn Dagger2 using MVVM and Navigation Component
 31. Tambahkan module AuthModule pada contributeAuthActivity di ActivityBuildersModule class
 32. Inject AuthApi pada contructor AuthViewModel dan buat log debug untuk testing apakah AuthApi berhasil di inject
 33. Run app
+34. Buat DTO atau model class dengan nama User, sesuaikan dengan response
+35. Tambahkan callAdapter pada method provideInstanceRetrofit di AppModule dengan parameter RxJavaCallAdapterFactory.create()
+36. Buat method getUser pada AuthApi dengan return Flowable
+37. Remove log debug pada constructor AuthViewModel dan ganti dengan memanggil method getUser pada AuthApi
+38. Pada onNext() method berarti data berhasil diterima, buat log debug untuk testing
+39. Tambahkan Internet permission pada AndroidManifest.xml
+40. Run App
