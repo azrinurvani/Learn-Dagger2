@@ -42,3 +42,9 @@ Learn Dagger2 using MVVM and Navigation Component
 38. Pada onNext() method berarti data berhasil diterima, buat log debug untuk testing
 39. Tambahkan Internet permission pada AndroidManifest.xml
 40. Run App
+41. Hapus blok program pemanggilan authApi.getUser pada AuthViewModel
+42. Buat object authUser dengan return MediatorLiveData<User> pada AuthViewModel
+43. Buat method dengan nama observeUser() dengan return authUser pada AuthViewModel
+44. Buat method authenticateWithId(int userId) untuk proses convert Rx Flowable ke LiveData
+45. Panggil method tersebut setelah action listener dari login button di AuthActivity
+46. Run App
