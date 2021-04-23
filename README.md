@@ -28,3 +28,10 @@ Learn Dagger2 using MVVM and Navigation Component
 24. Buat variable untuk AuthViewModel dan inisialisasi dengan menggunakan ViewModelProviderFactory
 25. Buat log debug untuk testing apakah AuthViewModel berjalan di constructor AuthViewModel
 26. Run app
+27. Buat new package dengan nama Util, dan Buat class baru dengan nama Constants yang berisi constants BASE_URL
+28. Pada AppModule buat depedency untuk instance retrofit dengan nama provideRetrofitInstance
+29. Pada package di buat package baru dengan nama network dan buat class interface dengan nama AuthApi untuk end point dari Auth
+30. Pada package di/auth buat class baru (module baru) dengan nama AuthModule dan buat depedency untuk create Api Service dari Auth dengan nama provideAuthApi dengan return AuthApi --> retrofit.create(AuthApi.class)
+31. Tambahkan module AuthModule pada contributeAuthActivity di ActivityBuildersModule class
+32. Inject AuthApi pada contructor AuthViewModel dan buat log debug untuk testing apakah AuthApi berhasil di inject
+33. Run app
