@@ -1,5 +1,6 @@
 package com.mobile.azrinurvani.learndagger2.di;
 
+import com.mobile.azrinurvani.learndagger2.di.auth.AuthModule;
 import com.mobile.azrinurvani.learndagger2.di.auth.AuthViewModelsModule;
 import com.mobile.azrinurvani.learndagger2.ui.auth.AuthActivity;
 
@@ -15,7 +16,7 @@ public abstract class ActivityBuildersModule {
 
     @ContributesAndroidInjector(
             //sub component Auth
-            modules = {AuthViewModelsModule.class}
+            modules = {AuthViewModelsModule.class, AuthModule.class}
     )
     abstract AuthActivity contributeAuthActivity();
 
