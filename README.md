@@ -42,3 +42,17 @@ Learn Dagger2 using MVVM and Navigation Component
 38. Pada onNext() method berarti data berhasil diterima, buat log debug untuk testing
 39. Tambahkan Internet permission pada AndroidManifest.xml
 40. Run App
+41. Hapus blok program pemanggilan authApi.getUser pada AuthViewModel
+42. Buat object authUser dengan return MediatorLiveData<User> pada AuthViewModel
+43. Buat method dengan nama observeUser() dengan return authUser pada AuthViewModel
+44. Buat method authenticateWithId(int userId) untuk proses convert Rx Flowable ke LiveData
+45. Panggil method tersebut setelah action listener dari login button di AuthActivity
+46. Run App
+47. Buat default constructor pada model User
+48. Buat class baru dengan nama AuthResource<T> di package ui/auth
+49. Pada AuthViewModel ganti object authUser dengan return MediatorLiveData<AuthResource<User>>
+50. Sesuaikan return value method observeUser dan authenticateWithId pada AuthViewModel
+51. Tambahkan method Rx onErrorReturn() dan map() untuk merubah return error menggunakan AuthResource<T>
+52. Tambahkan method untuk visiblity progressbar dengan nama showProgressBar dengan parameter boolean
+53. Update line code untuk method subscribeObserve menggunakan fitur generic class (AuthResouce) sesuai dengan yang ada di AuthViewModel
+54. Run App
