@@ -1,10 +1,9 @@
 package com.mobile.azrinurvani.learndagger2.ui.auth;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import android.app.Application;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -16,9 +15,10 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.bumptech.glide.RequestManager;
-import com.bumptech.glide.request.RequestOptions;
+import com.mobile.azrinurvani.learndagger2.BaseActivity;
 import com.mobile.azrinurvani.learndagger2.R;
 import com.mobile.azrinurvani.learndagger2.models.User;
+import com.mobile.azrinurvani.learndagger2.ui.main.MainActivity;
 import com.mobile.azrinurvani.learndagger2.viewmodels.ViewModelProviderFactory;
 
 import javax.inject.Inject;
@@ -95,18 +95,13 @@ public class AuthActivity extends DaggerAppCompatActivity implements View.OnClic
     }
 
     private void subscribeObserver(){
-        viewModel.observeUser().observe(this, new Observer<AuthResource<User>>() {
+        viewModel.observeAuthState().observe(this, new Observer<AuthResource<User>>() {
             @Override
             public void onChanged(AuthResource<User> userAuthResource) {
                 if (userAuthResource!=null){
                     switch (userAuthResource.status){
                         case LOADING: {
                             showProgressBar(true);
-                            break;
-                        }
-                        case AUTHENTICATED: {
-                            showProgressBar(false);
-                            Log.d(TAG, "onChanged: "+userAuthResource.data.getEmail());
                             break;
                         }
 
@@ -117,7 +112,14 @@ public class AuthActivity extends DaggerAppCompatActivity implements View.OnClic
                                     "\nDid you enter a number between 1 and 10?",Toast.LENGTH_LONG).show();
                             break;
                         }
-                        case NOT_AUTHENTICATED: {
+                        case AUTHENTICATED: {
+                            showProgressBar(false);
+                            Log.d(TAG, "onChanged: "+userAuthResource.data.getEmail());
+                            onLoginSuccess();
+                            break;
+                        }
+
+                            case NOT_AUTHENTICATED: {
                             showProgressBar(false);
                             break;
                         }
@@ -126,6 +128,12 @@ public class AuthActivity extends DaggerAppCompatActivity implements View.OnClic
                 }
             }
         });
+    }
+
+    private void onLoginSuccess(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void showProgressBar(boolean isVisible){

@@ -4,10 +4,10 @@ import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.LiveDataReactiveStreams;
-import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 
+import com.mobile.azrinurvani.learndagger2.SessionManager;
 import com.mobile.azrinurvani.learndagger2.di.network.auth.AuthApi;
 import com.mobile.azrinurvani.learndagger2.models.User;
 
@@ -23,11 +23,13 @@ public class AuthViewModel extends ViewModel {
 
     private AuthApi authApi;
 
-    private MediatorLiveData<AuthResource<User>> authUser = new MediatorLiveData<>();
+    //private MediatorLiveData<AuthResource<User>> authUser = new MediatorLiveData<>();
+    private SessionManager sessionManager;
 
     @Inject
-    public AuthViewModel(AuthApi authApi) {
+    public AuthViewModel(AuthApi authApi, SessionManager sessionManager) {
         this.authApi = authApi;
+        this.sessionManager = sessionManager;
         Log.d(TAG, "AuthViewModel: viewModel is Working....");
 
 
@@ -35,8 +37,14 @@ public class AuthViewModel extends ViewModel {
 
     public void authenticateWithId(int userId){
         //LiveDataReactiveStreams berfungsi untuk convert Rx Observables (Flowable) ke dalam bentuk LiveData
-        authUser.setValue(AuthResource.loading((User)null));
-        final LiveData<AuthResource<User>> source = LiveDataReactiveStreams.fromPublisher(
+        Log.d(TAG, "authenticateWithId: attempting to login");
+        sessionManager.authenticateWithId(queryUserId(userId));
+
+    }
+
+    private LiveData<AuthResource<User>> queryUserId(int userId){
+        return LiveDataReactiveStreams.fromPublisher(
+                //ambil data dari end point
                 authApi.getUser(userId)
                         //dipanggil apabila terjadi error
                         .onErrorReturn(new Function<Throwable, User>() {
@@ -53,24 +61,17 @@ public class AuthViewModel extends ViewModel {
                             @Override
                             public AuthResource<User> apply(@NonNull User user) throws Exception {
                                 if (user.getId() == -1){
-                                    AuthResource.error("Could not authenticate",null);
+                                    return AuthResource.error("Could not authenticate",null);
                                 }
                                 return AuthResource.authenticated(user);
                             }
                         })
-                .subscribeOn(Schedulers.io())
+                        .subscribeOn(Schedulers.io())
         );
-
-        authUser.addSource(source, new Observer<AuthResource<User>>() {
-            @Override
-            public void onChanged(AuthResource<User> user) {
-                authUser.setValue(user);
-                authUser.removeSource(source);
-            }
-        });
     }
 
-    public LiveData<AuthResource<User>> observeUser(){
-        return authUser;
+
+    public LiveData<AuthResource<User>> observeAuthState(){
+        return sessionManager.getAuthUser();
     }
 }

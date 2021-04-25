@@ -3,6 +3,7 @@ package com.mobile.azrinurvani.learndagger2.di;
 import android.app.Application;
 
 import com.mobile.azrinurvani.learndagger2.BaseApplication;
+import com.mobile.azrinurvani.learndagger2.SessionManager;
 
 import javax.inject.Singleton;
 
@@ -23,6 +24,8 @@ import dagger.android.support.AndroidSupportInjectionModule;
         }
 )
 public interface AppComponent extends AndroidInjector<BaseApplication> {
+
+    SessionManager sessionManager();
 
     @Component.Builder
     interface Builder{
