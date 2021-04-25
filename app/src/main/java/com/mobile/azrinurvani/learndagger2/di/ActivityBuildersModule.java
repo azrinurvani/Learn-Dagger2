@@ -2,6 +2,7 @@ package com.mobile.azrinurvani.learndagger2.di;
 
 import com.mobile.azrinurvani.learndagger2.di.auth.AuthModule;
 import com.mobile.azrinurvani.learndagger2.di.auth.AuthViewModelsModule;
+import com.mobile.azrinurvani.learndagger2.di.main.MainFragmentBuildersModule;
 import com.mobile.azrinurvani.learndagger2.ui.auth.AuthActivity;
 import com.mobile.azrinurvani.learndagger2.ui.main.MainActivity;
 
@@ -23,7 +24,7 @@ public abstract class ActivityBuildersModule {
 
 
     @ContributesAndroidInjector(
-
+        modules = {MainFragmentBuildersModule.class}
     )
     abstract MainActivity contributeMainActivity();
 }
