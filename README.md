@@ -56,3 +56,10 @@ Learn Dagger2 using MVVM and Navigation Component
 52. Tambahkan method untuk visiblity progressbar dengan nama showProgressBar dengan parameter boolean
 53. Update line code untuk method subscribeObserve menggunakan fitur generic class (AuthResouce) sesuai dengan yang ada di AuthViewModel
 54. Run App
+55.Buat class baru dengan nama SessionManager dengan scope @singleton (pada class ini berfungsi untuk manajemen session user yang kemudian akan dipanggil di AuthViewModel)
+56.Buat class baru dengan nama BaseActivity dan extends dari DaggerAppCompatActivity untuk manajemen Auth State berupa LOADING,ERROR,AUTHENTICATED, NOT_AUTHENTICATED dalam segi UI yang akan di implement di MainActivity nantinya (jika tidak berhasil login maka redirect ke halaman Login (AuthActivity))
+57. Buat Activity baru dengan nama MainActivity dan extends dari BaseActivity
+58. Refactor baris code yang ada di AuthViewModel menggunakan SessionManger untuk observeUser dan authenticateWithId (disini object authUser atau MediatorLiveData diganti atau dipindahkan ke SessionManager)
+59. Jangan lupa SessionManager di tambahkan ke depedency yaitu di AppComponent karena bersifat @singleton atau SessionManager class dibutuhkan selama aplikasi hidup atau aktif
+60. Tambahkan MainActivity di ActivityBuildersModule
+61. Run App
