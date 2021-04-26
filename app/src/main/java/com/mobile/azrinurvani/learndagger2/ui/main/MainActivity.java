@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 
 import com.mobile.azrinurvani.learndagger2.BaseActivity;
 import com.mobile.azrinurvani.learndagger2.R;
+import com.mobile.azrinurvani.learndagger2.ui.main.post.PostFragment;
 import com.mobile.azrinurvani.learndagger2.ui.main.profile.ProfileFragment;
 
 public class MainActivity extends BaseActivity {
@@ -27,7 +28,7 @@ public class MainActivity extends BaseActivity {
 
     private void testFragment(){
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.main_container,new ProfileFragment())
+                .replace(R.id.main_container,new PostFragment())
                 .commit();
     }
 

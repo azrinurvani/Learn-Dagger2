@@ -3,6 +3,8 @@ package com.mobile.azrinurvani.learndagger2.di;
 import com.mobile.azrinurvani.learndagger2.di.auth.AuthModule;
 import com.mobile.azrinurvani.learndagger2.di.auth.AuthViewModelsModule;
 import com.mobile.azrinurvani.learndagger2.di.main.MainFragmentBuildersModule;
+import com.mobile.azrinurvani.learndagger2.di.main.MainModule;
+import com.mobile.azrinurvani.learndagger2.di.main.MainViewModelsModule;
 import com.mobile.azrinurvani.learndagger2.ui.auth.AuthActivity;
 import com.mobile.azrinurvani.learndagger2.ui.main.MainActivity;
 
@@ -18,13 +20,20 @@ public abstract class ActivityBuildersModule {
 
     @ContributesAndroidInjector(
             //sub component Auth
-            modules = {AuthViewModelsModule.class, AuthModule.class}
+            modules = {
+                    AuthViewModelsModule.class,
+                    AuthModule.class
+            }
     )
     abstract AuthActivity contributeAuthActivity();
 
 
     @ContributesAndroidInjector(
-        modules = {MainFragmentBuildersModule.class}
+        modules = {
+                MainFragmentBuildersModule.class,
+                MainViewModelsModule.class,
+                MainModule.class
+        }
     )
     abstract MainActivity contributeMainActivity();
 }
