@@ -63,3 +63,11 @@ Learn Dagger2 using MVVM and Navigation Component
 59. Jangan lupa SessionManager di tambahkan ke depedency yaitu di AppComponent karena bersifat @singleton atau SessionManager class dibutuhkan selama aplikasi hidup atau aktif
 60. Tambahkan MainActivity di ActivityBuildersModule
 61. Run App
+62. Buat class baru dengan nama ProfileFragment extends dari DaggerFragment di package ui/main beserta layoutnya dengan nama fragment_profile
+63. Buat class baru dengan nama ProfileViewModel dengan extends ViewModel
+64. Buat package baru di dalam di dengan nama main dan buat class baru MainFragmentBuildersModule untuk mendaftarkan Fragment dan MainViewModelsModule untuk module ViewModel dari MainActivity (termasuk ProfileViewModel)
+65. Tambahkan module tersebut di dalam contributeMainActivity di class ActivityBuildersModule
+66. Buat main_menu.xml untuk menu logout
+67. Inflate ProfileFragment di dalam MainActivity
+68. Inisialisasi ProfileViewModel di MainActivity untuk testing apakah ProfileViewModel berhasil di inject
+69. Run App
