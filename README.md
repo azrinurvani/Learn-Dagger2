@@ -71,3 +71,15 @@ Learn Dagger2 using MVVM and Navigation Component
 67. Inflate ProfileFragment di dalam MainActivity
 68. Inisialisasi ProfileViewModel di MainActivity untuk testing apakah ProfileViewModel berhasil di inject
 69. Run App
+70. Buat layout baru dengan nama fragment_post.xml dan copy design xml nya dari GIT
+71. Pada ui/main buat package baru dengan nama post
+72. Buat class interface dengan nama MainApi di pacakge di/networks/main
+73. Buat class baru dengan nama MainModule di pacakge di/main (disini berfungsi untuk membuat depedency yang berhubungan dengan MainActivity)
+74. Buat juga class PostFragment dengan extends dari DaggerFragment untuk View dari fragment_post di ui/main/post
+75. Tambahkan PostFragment sebagai depedency di MainBuildersModule seperti yang ada di ProfileFragment
+76. Buat Class baru dengan nama PostViewModel di pacakge ui/main/post dan lakukan inject constructor MainApi dan SessionManager
+77. Tambahkan PostViewModel di MainViewModelsModule sebagai depedency ViewModel dari PostFragment nantinya
+78. Tambahkan MainModule dan MainViewModelsModule di method contributeMainActivity di module ActivityBuildersModule sebagai sub componentnya
+79. Inisialisasi PostViewModel di PostFragment dengan menggunakan ViewModelProviderFactory untuk menguji apakah depedency dari PostViewModel berjalan
+80. Ganti testFragment() dengan menjalankan PostFragment sebagai testing apakah PostFragment berjalan dengan benar
+81. Run App
