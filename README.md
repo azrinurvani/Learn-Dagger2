@@ -90,3 +90,14 @@ Learn Dagger2 using MVVM and Navigation Component
 86. Panggil method tersebut di PostFragment dengan membuat method baru yang bernama subscribeObservers()
 87. Panggil method subscribeObservers() di onViewCreated()
 88. Run App
+89. Buat new layout dengan nama layout_post_item.xml dan copy paste design layout tersebut dari github
+90. Pada pacakge ui/main buat package baru dengan nama adapter, dan disana buatlah new class dengan nama PostRecyclerAdapter
+91. Copy paste baris code untuk adapter dari recycler layout_post_item.xml dari github
+92. Pada util buatlah class baru untuk item decoration dari RecyclerView dengan nama VerticalItemDecoration dan copy paste baris kode dari github ke class tersebut.
+93. Tambahkan depedency untuk PostRecyclerAdapter, VerticalItemDecoration, serta LayoutManager di MainModule agar bisa di inject pada PostFragment nantinya
+94. Inject PostRecyclerAdapter, VerticalItemDecoration dan LayoutManager di PostFragment
+95. Buat method initRecycler untuk inisialisasi view recyclerView (adapter, decoration, dan layout manager)
+96. Panggil method tersebut di onViewCreated()
+97. Update baris code untuk subscribeObservers() dengan menggunakan switch statement dari status berupa LOADING, SUCCESS, dan ERROR.
+98. Buat log debug pada setiap statement, dan pada case SUCCESS, set nilai adapter dari PostRecyclerAdapter, dengan method adapter.setPosts(listResources.data)
+99. Run app.
