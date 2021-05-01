@@ -83,3 +83,10 @@ Learn Dagger2 using MVVM and Navigation Component
 79. Inisialisasi PostViewModel di PostFragment dengan menggunakan ViewModelProviderFactory untuk menguji apakah depedency dari PostViewModel berjalan
 80. Ganti testFragment() dengan menjalankan PostFragment sebagai testing apakah PostFragment berjalan dengan benar
 81. Run App
+82. Buat class baru dengan nama Resource<T> (class ini berfungsi untuk generic model dari response end point)
+83. Copy paste dari GIT untuk Resource<T>
+84. Pada PostViewModel buat object untuk mediator live data
+85. Pada PostViewModel buat method untuk return LiveData dari end point post (mainApi.getPostFromUser(id)) dengan nama
+86. Panggil method tersebut di PostFragment dengan membuat method baru yang bernama subscribeObservers()
+87. Panggil method subscribeObservers() di onViewCreated()
+88. Run App
