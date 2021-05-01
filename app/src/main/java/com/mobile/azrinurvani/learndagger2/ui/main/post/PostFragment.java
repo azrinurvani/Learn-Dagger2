@@ -49,7 +49,6 @@ public class PostFragment extends DaggerFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        Toast.makeText(getActivity(),"PostFragment",Toast.LENGTH_LONG).show();
         return inflater.inflate(R.layout.fragment_posts,container,false);
     }
 
