@@ -22,6 +22,7 @@ import com.mobile.azrinurvani.learndagger2.ui.main.MainActivity;
 import com.mobile.azrinurvani.learndagger2.viewmodels.ViewModelProviderFactory;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import dagger.android.support.DaggerAppCompatActivity;
 
@@ -54,6 +55,14 @@ public class AuthActivity extends DaggerAppCompatActivity implements View.OnClic
     private EditText userId;
     private ProgressBar progressBar;
 
+    //untuk pengujian scoping
+    @Inject
+    @Named("app-user")
+    User user1;
+
+    @Inject
+    @Named("auth-user")
+    User user2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +79,9 @@ public class AuthActivity extends DaggerAppCompatActivity implements View.OnClic
 
         setLogo();
         subscribeObserver();
+
+        Log.d(TAG, "onCreate: user singleton -> "+user1);
+        Log.d(TAG, "onCreate: user auth -> "+user2);
     }
 
     private void setLogo(){

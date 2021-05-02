@@ -9,8 +9,10 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
 import com.mobile.azrinurvani.learndagger2.R;
+import com.mobile.azrinurvani.learndagger2.models.User;
 import com.mobile.azrinurvani.learndagger2.util.Constants;
 
+import javax.inject.Named;
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -54,6 +56,14 @@ public class AppModule {
         return ContextCompat.getDrawable(application,R.drawable.logo);
     }
 
+    @Singleton
+    @Provides
+    //@Named() berfungsi untuk memberi nama spesifik pada depedency apabila ada depedency lain menggunakan tipe depedency yang sama
+    // pada kali ini depedency User juga akan digunakan pada AuthModule sebagai contoh dalam melihat hasil dari scoping
+    @Named("app-user")
+    static User someUser(){
+        return new User();
+    }
 
 //    @Provides
 //    static String someString(){
