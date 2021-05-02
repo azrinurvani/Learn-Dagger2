@@ -1,9 +1,11 @@
 package com.mobile.azrinurvani.learndagger2.di;
 
 import com.mobile.azrinurvani.learndagger2.di.auth.AuthModule;
+import com.mobile.azrinurvani.learndagger2.di.auth.AuthScope;
 import com.mobile.azrinurvani.learndagger2.di.auth.AuthViewModelsModule;
 import com.mobile.azrinurvani.learndagger2.di.main.MainFragmentBuildersModule;
 import com.mobile.azrinurvani.learndagger2.di.main.MainModule;
+import com.mobile.azrinurvani.learndagger2.di.main.MainScope;
 import com.mobile.azrinurvani.learndagger2.di.main.MainViewModelsModule;
 import com.mobile.azrinurvani.learndagger2.ui.auth.AuthActivity;
 import com.mobile.azrinurvani.learndagger2.ui.main.MainActivity;
@@ -18,6 +20,7 @@ public abstract class ActivityBuildersModule {
     //Method atau object yang ada pada module yang berisi ContributeAndroidInjector (Bind Activity)
     // harus bersifat abstract atau static
 
+    @AuthScope
     @ContributesAndroidInjector(
             //sub component Auth
             modules = {
@@ -28,6 +31,7 @@ public abstract class ActivityBuildersModule {
     abstract AuthActivity contributeAuthActivity();
 
 
+    @MainScope
     @ContributesAndroidInjector(
         modules = {
                 MainFragmentBuildersModule.class,
