@@ -101,3 +101,18 @@ Learn Dagger2 using MVVM and Navigation Component
 97. Update baris code untuk subscribeObservers() dengan menggunakan switch statement dari status berupa LOADING, SUCCESS, dan ERROR.
 98. Buat log debug pada setiap statement, dan pada case SUCCESS, set nilai adapter dari PostRecyclerAdapter, dengan method adapter.setPosts(listResources.data)
 99. Run app.
+100. Buat menu file dengan nama drawer_menu.xml dan tambahkan item untuk profile dan post
+101. Buat navigation file dengan nama nav_graph.xml, kemudian pada design tambahkan layout fragment_profile.xml dan fragment_post.xml (jangan lupa untuk deklarasi id, name serta label)
+102. Refactor activity_main.xml pada bagian <FrameLayout/>, hapus komponen tersebut ganti dengan <fragment/>
+103. Pada tag <fragment> buat atribut di dalam tag yang menjadikannya sebagai Navigation Host (tetapkan id, name, defaultNavHost, dan navGraph)
+104. Tambahkan komponen NavigationView bertindak sebagai Navigation di drawer layout nya nanti.
+105. Pastikan root dari activity_main.xml adalah drawerLayout serta jangan lupa memberikan id dengan nama drawerLayout
+106. Pada MainActivity buat object untuk inisialisasi dari komponen NavigationView dan DrawerLayout pada method onCreate()
+107. Tambahkan implement NavigationView.OnNavigationItemSelectedListener pada MainActivity dan akan generate method onNavigationItemSelected untuk switch statement id dari item NavigationView tersebut.
+108. Agar action bar (berupa icon hamburger dan icon backstack) bisa ditampilkan buat method init() yang mana disana setup action bar dengan cara menggunakan NavigationComponent
+109. Override method onSupportNavigateUp() untuk handle icon hamburger dan icon back bisa di click
+110. Untuk handle apabila navigation drawer tampil atau dibuka tidak bisa kembali menutup ketika di click maka pada bagian override method onItemMenuSelected() tambahkan case android.R.id.home dan handle if statement agar drawerLayout bisa menutup ketika drawerLayout dalam keadaan open (isDrawerOpen)
+111. Pada bagian onNavigationItemSelected() dengan case R.id.profileFragment, tambahkan blok program untuk init NavOptions (berfungsi untuk clear backstack), dan tambahkan pada parameter navigate() -> popUpToInclusive(bisa juga melalui xml)
+112. Untuk handle backstack pada PostFragment tidak menggunakan popUpToInclusive, melainkan menggunakan private method yang memastikan NavController navigate ke PostFragment (id berdasarkan nav_graph.xml), dan method tersebut dipanggil di switch statement NavigationItemSelected() di bagian ID postFragment
+113. Jangan lupa panggil method init() di onCreate()
+114. Run app
