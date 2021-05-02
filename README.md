@@ -116,3 +116,9 @@ Learn Dagger2 using MVVM and Navigation Component
 112. Untuk handle backstack pada PostFragment tidak menggunakan popUpToInclusive, melainkan menggunakan private method yang memastikan NavController navigate ke PostFragment (id berdasarkan nav_graph.xml), dan method tersebut dipanggil di switch statement NavigationItemSelected() di bagian ID postFragment
 113. Jangan lupa panggil method init() di onCreate()
 114. Run app
+115. Buat annotaion class pada package di\auth dengan nama AuthScope, copy annotation yang ada pada @singleton (bisa ditemukan di AppComponent atau di depedency yang menggunakan scope @singleton)
+116. Buat annotation class dengan nama MainScope pada pacakge di\main
+117. Tambahkan @AuthScope pada setiap depedency AuthModule, dan @MainScope pada setiap depedency MainModule, begitupun pada contributeAndroidInjector untuk AuthActivity dan MainActivity (pada ActivityBuildersModule)
+118. Buat depedency User dengan scope Singleton dan AuthScope, dan lakukan inject pada AuthActivity, lihat pada log debug untuk testing, agar bisa mengetahui perbedaannya.
+119. Singleton cenderung reuse depedency yang sudah dibuat sebelumnya, sedangkan kalau menggunakan custom scope, maka depedency dari scope tersebut akan hanya digunakan dan di destroy kembali apabila sudah tidak dibutuhkan pada ui
+120. Run App
